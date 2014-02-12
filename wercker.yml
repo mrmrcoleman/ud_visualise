@@ -9,5 +9,7 @@ build:
            sudo docker build -rm -t mrmrcoleman/pythonjs .
            cd ../visualise
            sudo docker build -rm -t mrmrcoleman/visualise .
+           WEB_WORKER=$(docker run -p 5000:5000 -d mrmrcoleman/visualise /bin/bash -c "cd /opt/visualise/ && python run.py")
            cd visualise
            python ./test.py
+           docker stop $WEB_WORKER
