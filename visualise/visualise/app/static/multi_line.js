@@ -3,7 +3,7 @@
 
     "use strict";
 
-    var api_key = getURLParameter("index");
+    var api_key = getURLParameter("api");
     if (api_key === null) {
         api_key = "";
     }
