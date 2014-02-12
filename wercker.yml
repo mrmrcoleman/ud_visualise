@@ -9,3 +9,5 @@ build:
            sudo docker build -rm -t mrmrcoleman/pythonjs .
            cd ../visualise
            sudo docker build -rm -t mrmrcoleman/visualise .
+           cd visualise
+           python ./test.py
