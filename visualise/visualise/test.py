@@ -4,7 +4,7 @@ import unittest
 
 
 class VisualiseTest(unittest.TestCase):
-    URL = "localhost:8080"
+    URL = "localhost:5000"
 
     #Should be able to connect
     def testConnect(self):
