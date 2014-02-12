@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Visualise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+      <style type="text/css">
+        .jumbotron{padding-bottom:0;}
+      </style>
+      <link rel="stylesheet" href="http://getbootstrap.com/examples/justified-nav/justified-nav.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <a href="http://continuousdelivery.uglyduckling.nl"><img src="static/img/ud_logo.png" alt="Ugly Duckling Logo"/></a>
+        <ul class="nav nav-justified">
+          <li class="active"><a href="#">Home</a></li> 
+          <li><a href="#">About</a></li> 
+          <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+    <div class="jumbotron">
+      <h1>Visualise Your Data</h1>
+      <p class="lead">
+      
+Looking at a long table of numbers isn't exactly inspiring or easy. The answers
+are in there somewhere, but it takes forever to get them out. You just don't
+have time to open the Spreadsheet and check the numbers every day.
+      
+      </p>
+      <p><a class="btn btn-lg btn-success" href="#" role="button">Talk to us today</a></p>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-md-offset-3">
+          <iframe width="800" height="300" frameborder="0" scrolling="no" src="/static/embed_multi_line.html?index={{index}}">iframe</iframe>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-md-offset-3">
+        <div class="row">
+          <form class="form-horizontal" method="POST" role="form" enctype="multipart/form-data" action="{{ url_for('visualise') }}">
+            <div class="form-group">
+              <div class="col-sm-8">
+                <select name="index" class="form-control">
+                  <option id="RDSB" value="RDSB">Royal Dutch Shell</option>
+                  <option id="HSBA" value="HSBA">HSBC</option>
+                  <option id="BATS" value="BATS">British American Tobacco</option>
+                  <option id="VOD" value="VOD">Vodafone Group</option>
+                  <option id="GSK" value="GSK">GlaxoSmithKline</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <button type="submit" class="btn btn-default">Compare Stock to FTSE</button>
+              </div>
+            </div>
+            <!--
+            OK, this embed link will more or less work, but disabled temporarily as:
+              1) Need to talk to quandl
+              2) Need to make look better
+              3) Need to offer inserting own API key
+
+            <div class="form-group">
+              <label for="embed" class="col-sm-4 control-label">Embed:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="embed" 
+                value='&lt;iframe width="800" height="300" frameborder="0" scrolling="no" src="{{server_url}}/static/embed_multi_line.html?index={{index}}"&gt;&lt;/iframe&gt;'/>
+              </div>
+            </div> -->
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <h2>Make your data sing</h2>
+        <p>
+By turning your data into charts and putting them on a secure website or your
+company portal/intranet, everyone gets instant access to up-to-date and easily
+understood data. Embed the graphs in your reports. Make your data sing.
+        </p>
+        <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-lg-4">
+        <h2>These are not your Daddy's bar charts</h2>
+        <p>
+        We can do better than simple bar and pie charts these days. Some examples and links go here... Also probably want to say something about being able to do things Excel can't do.
+        </p>
+        <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-lg-4">
+        <h2>Always available</h2>
+        <p>What's the point in making charts if you don't look at them?
+        We'll help you get access the charts you need when you need them.
+        For example, we can create a custom web dashboard or embed them into your
+        company portal with a live link to the data so they are always up-to-data.</p>
+        <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>Example Chart</h2>
+        Upload your x data here and see a x chart.
+        I'm hoping here we can chart some sort of data that is common in finance,
+        but difficult to do in Excel and make it look nice.
+        We should also give them example data and let them play with the numbers.
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>&copy; UglyDuckling 2014</p>
+    </div>
+  </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script>
+      document.getElementById("{{index}}").selected = true;
+    </script>
+  </body>
+</html>

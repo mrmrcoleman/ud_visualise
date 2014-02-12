@@ -1,0 +1,30 @@
+.status {
+  font: 20px;
+}
+
+html,body
+{
+    height:100%;
+}
+ 
+#wrap
+{
+  min-height: 100%;  
+}
+ 
+#main
+{
+    overflow:auto;
+    padding-bottom:150px; /* this needs to be bigger than footer height*/
+}
+ 
+.footer 
+{
+    position: relative;
+    margin-top: -160px; /* negative value of footer height */
+    height: 150px;
+    clear:both;
+    padding-top:20px;
+    padding-right: 100px;
+    color:#fff;
+} 
