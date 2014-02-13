@@ -12,5 +12,13 @@ build:
            #python ./test.py
            #sudo docker stop $WEB_WORKER
            ls -ahl ~/.ssh
-           echo $EC2SSHKEY_PRIVATE > key.tmp
+           #echo $EC2SSHKEY_PRIVATE
+           #ssh -i key.tmp -o StrictHostKeyChecking=no ubuntu@54.213.8.33 ls -ahl
+deploy:
+    steps:
+      - add-ssh-key:
+        keyname: EC2SSHKEY
+      - script:
+         name: deploy to EC2
+         code: |-
            ssh -i key.tmp -o StrictHostKeyChecking=no ubuntu@54.213.8.33 ls -ahl
