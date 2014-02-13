@@ -5,4 +5,10 @@ build:
       - script:
          name: build pythonjs image
          code: |-
-           sudo docker build -rm -t mrmrcoleman/pythonjs .
+           #cd visualise
+           #sudo docker build -rm -t mrmrcoleman/visualise .
+           #WEB_WORKER=$(sudo docker run -p 5000:5000 -d mrmrcoleman/visualise /bin/bash -c "cd /opt/visualise/ && python run.py")
+           #cd visualise
+           #python ./test.py
+           #sudo docker stop $WEB_WORKER
+           ssh ubuntu@54.201.171.208 ls -ahl
