@@ -2,8 +2,6 @@ box: wercker-labs/docker
 
 build:
     steps:
-      - add-ssh-key:
-        keyname: EC2SSHKEY
       - script:
          name: build pythonjs image
          code: |-
@@ -14,5 +12,5 @@ build:
            #python ./test.py
            #sudo docker stop $WEB_WORKER
            ls -ahl ~/.ssh
-           echo $EC2SSHKEY
+           echo $EC2SSHKEY_PRIVATE
            ssh -i $EC2SSHKEY -o StrictHostKeyChecking=no ubuntu@54.201.171.208 ls -ahl
