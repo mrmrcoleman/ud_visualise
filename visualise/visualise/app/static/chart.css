@@ -51,3 +51,12 @@
 #desc {
     clear: both;
 }
+
+.hide {
+  display: none;
+}
+
+.loader {
+  padding-left: 220px;
+  padding-top: 80px;
+}

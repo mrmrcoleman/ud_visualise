@@ -3,23 +3,29 @@
 
     "use strict";
 
+    //Loading image
+    d3.select("#loader").classed({'hide': false});
+    d3.select("#chart").classed({'hide': true});
+   
+
     var api_key = getURLParameter("api");
     if (api_key === null) {
         api_key = "";
     }
 
+    var options = "?" + api_key + "&trim_start=2000-01-01&trim_end=2014-01-30&sort_order=asc&collapse=weekly"
     //Data
     var indexes={
-        "SP500": "http://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.csv?" + api_key + "&trim_start=1950-01-03&trim_end=2014-01-29&sort_order=desc",
-        "Nasdaq": "http://www.quandl.com/api/v1/datasets/YAHOO/INDEX_IXIC.csv?" + api_key + "&trim_start=1971-02-05&trim_end=2014-01-29&sort_order=desc",
-        "FTSE": "http://www.quandl.com/api/v1/datasets/YAHOO/INDEX_FTSE.csv?" + api_key + "&trim_start=2000-01-01&trim_end=2014-01-28&sort_order=desc",
-        "AEX": "http://www.quandl.com/api/v1/datasets/YAHOO/INDEX_AEX.csv?" + api_key + "&trim_start=1992-10-12&trim_end=2014-01-29&sort_order=desc",
-        "DAX": "http://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GDAXI.csv?" + api_key + "&trim_start=1990-11-26&trim_end=2014-01-29&sort_order=desc",
-        "RDSB": "http://www.quandl.com/api/v1/datasets/GOOG/LON_RDSB.csv?" + api_key + "&trim_start=2000-01-01&trim_end=2014-01-30&sort_order=desc", 
-        "HSBA": "http://www.quandl.com/api/v1/datasets/GOOG/LON_HSBA.csv?" + api_key + "&trim_start=2000-01-01&trim_end=2014-01-30&sort_order=desc", 
-        "BATS": "http://www.quandl.com/api/v1/datasets/GOOG/LON_BATS.csv?" + api_key + "&trim_start=2000-01-01&trim_end=2014-01-30&sort_order=desc", 
-        "VOD": "http://www.quandl.com/api/v1/datasets/GOOG/LON_VOD.csv?" + api_key + "&trim_start=2000-01-01&trim_end=2014-01-30&sort_order=desc", 
-        "GSK": "http://www.quandl.com/api/v1/datasets/GOOG/LON_GSK.csv?" + api_key + "&trim_start=2000-01-01&trim_end=2014-01-30&sort_order=desc" 
+        "SP500": "http://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GSPC.csv?",
+        "Nasdaq": "http://www.quandl.com/api/v1/datasets/YAHOO/INDEX_IXIC.csv?",
+        "FTSE": "http://www.quandl.com/api/v1/datasets/YAHOO/INDEX_FTSE.csv?",
+        "AEX": "http://www.quandl.com/api/v1/datasets/YAHOO/INDEX_AEX.csv?",
+        "DAX": "http://www.quandl.com/api/v1/datasets/YAHOO/INDEX_GDAXI.csv?",
+        "RDSB": "http://www.quandl.com/api/v1/datasets/GOOG/LON_RDSB.csv?",
+        "HSBA": "http://www.quandl.com/api/v1/datasets/GOOG/LON_HSBA.csv?",
+        "BATS": "http://www.quandl.com/api/v1/datasets/GOOG/LON_BATS.csv",
+        "VOD": "http://www.quandl.com/api/v1/datasets/GOOG/LON_VOD.csv",
+        "GSK": "http://www.quandl.com/api/v1/datasets/GOOG/LON_GSK.csv"
     };
 
     //Setup
@@ -27,9 +33,7 @@
         width = 600 - margin.left - margin.right,
         height = 300 - margin.top - margin.bottom;
 
-
     //Main bit of program
-
 
     var stock2 = "FTSE";
     var stock1 = getURLParameter("index");
@@ -37,7 +41,8 @@
     var x = d3.time.scale().range([0, width]);
     var y = d3.scale.linear().range([height, 0]);
 
-    loadIndexData(indexes[stock1],
+    
+    loadIndexData(indexes[stock1] + options,
             function(data) {
 
                 x.domain(d3.extent(data, function(d) { return d.Date;}));
@@ -49,15 +54,20 @@
                 var ext = addLine(data, svg, x, y, "new-line");
                 y.domain(ext);
                 addLeftAxis(y, svg);
-                loadIndexData(indexes[stock2],
+
+                loadIndexData(indexes[stock2] + options,
                     function (data2) {
                         var ext = addLine(data2, svg, x, y);
 
                         y.domain(ext);
                         addRightAxis(y, width, svg);
+
+                        d3.select("#loader").classed({'hide': true});
+                        d3.select("#chart").classed({'hide': false});
                     });
             });
 
+            
 
     //The functions that do shit
 
