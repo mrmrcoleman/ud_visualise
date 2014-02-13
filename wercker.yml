@@ -5,6 +5,8 @@ build:
       - script:
          name: build pythonjs image
          code: |-
+           ls -ahl
+           whoami
            ./test.sh
 deploy:
     steps:
