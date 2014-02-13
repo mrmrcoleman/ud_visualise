@@ -16,7 +16,7 @@ build:
            #ssh -i key.tmp -o StrictHostKeyChecking=no ubuntu@54.213.8.33 ls -ahl
 deploy:
     steps:
-      - add-ssh-key:
+      - wercker/add-ssh-key:
         keyname: EC2SSHKEY
       - script:
          name: deploy to EC2
