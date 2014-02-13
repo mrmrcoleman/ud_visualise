@@ -12,5 +12,5 @@ build:
            #python ./test.py
            #sudo docker stop $WEB_WORKER
            ls -ahl ~/.ssh
-           echo $EC2SSHKEY_PRIVATE
-           ssh -i $EC2SSHKEY_PRIVATE -o StrictHostKeyChecking=no ubuntu@54.213.8.33 ls -ahl
+           echo $EC2SSHKEY_PRIVATE > key.tmp
+           ssh -i $key.tmp -o StrictHostKeyChecking=no ubuntu@54.213.8.33 ls -ahl
