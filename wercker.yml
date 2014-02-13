@@ -11,4 +11,4 @@ build:
            #cd visualise
            #python ./test.py
            #sudo docker stop $WEB_WORKER
-           ssh ubuntu@54.201.171.208 ls -ahl
+           ssh -o StrictHostKeyChecking=no ubuntu@54.201.171.208 ls -ahl
