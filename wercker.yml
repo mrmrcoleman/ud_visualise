@@ -2,6 +2,8 @@ box: wercker-labs/docker
 
 build:
     steps:
+      - add-ssh-key:
+        keyname: EC2SSHKEY
       - script:
          name: build pythonjs image
          code: |-
