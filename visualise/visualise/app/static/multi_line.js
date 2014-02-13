@@ -11,7 +11,10 @@
     var api_key = getURLParameter("api");
     if (api_key === null) {
         api_key = "";
+    } else {
+        api_key = "&auth_token=" + api_key;
     }
+
 
     var options = "?" + api_key + "&trim_start=2000-01-01&trim_end=2014-01-30&sort_order=asc&collapse=weekly"
     //Data

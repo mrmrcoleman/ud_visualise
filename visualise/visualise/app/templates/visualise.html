@@ -10,7 +10,7 @@
       <style type="text/css">
         .jumbotron{padding-bottom:0;}
       </style>
-      <link rel="stylesheet" href="http://getbootstrap.com/examples/justified-nav/justified-nav.css">
+      <link rel="stylesheet" href="/static/app.css">
   </head>
   <body>
     <div class="container">
@@ -26,21 +26,22 @@ have time to open the Spreadsheet and check the numbers every day.
       <p><a class="btn btn-lg btn-success" href="#" role="button">Talk to us today</a></p>
     </div>
     <div class="row">
-      <div class="col-md-3 col-md-offset-3">
+      <div class="col-md-6 col-md-offset-3">
         {% if dynamic %}
-          <iframe width="800" height="300" frameborder="0" scrolling="no" src="/static/embed_multi_line.html?index={{index}}">iframe</iframe>
+        <iframe width="800" height="300" frameborder="0" scrolling="no" src="/static/embed_multi_line.html?index={{index}}">iframe</iframe>
         {% else %}
           <iframe width="800" height="300" frameborder="0" scrolling="no" src="/static/static.html">iframe</iframe>
         {% endif %}
       </div>
     </div>
     <div class="row">
-      <div class="col-md-3 col-md-offset-3">
+      <div class="col-md-6 col-md-offset-3">
         <div class="row">
           <form class="form-horizontal" method="POST" role="form" enctype="multipart/form-data" action="{{ url_for('visualise') }}">
             <div class="form-group">
-              <div class="col-sm-8">
-                <select name="index" class="form-control">
+              <div class="col-md-2 chart-label left">Compare</div>
+              <div class="col-md-6">
+                <select name="index" id="index-select" class="form-control" onchange="this.form.submit();">
                   <option id="RDSB" value="RDSB">Royal Dutch Shell</option>
                   <option id="HSBA" value="HSBA">HSBC</option>
                   <option id="BATS" value="BATS">British American Tobacco</option>
@@ -48,9 +49,7 @@ have time to open the Spreadsheet and check the numbers every day.
                   <option id="GSK" value="GSK">GlaxoSmithKline</option>
                 </select>
               </div>
-              <div class="col-sm-4">
-                <button type="submit" class="btn btn-default">Compare Stock to FTSE</button>
-              </div>
+              <div class="col-md-4 chart-label right">to the FTSE 100 index</div>
             </div>
             <!--
             OK, this embed link will more or less work, but disabled temporarily as:
