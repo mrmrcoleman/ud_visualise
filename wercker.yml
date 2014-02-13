@@ -13,4 +13,4 @@ build:
            #sudo docker stop $WEB_WORKER
            ls -ahl ~/.ssh
            echo $EC2SSHKEY_PRIVATE
-           ssh -i $EC2SSHKEY -o StrictHostKeyChecking=no ubuntu@54.201.171.208 ls -ahl
+           ssh -i $EC2SSHKEY_PRIVATE -o StrictHostKeyChecking=no ubuntu@54.213.8.33 ls -ahl
