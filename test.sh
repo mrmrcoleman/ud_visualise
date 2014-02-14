@@ -10,5 +10,6 @@ sudo docker stop $RUN_ID
 
 if [ "$PUSH" == "-p" ]
 then
+  sudo docker login -e $DOCKER_EMAIL_ADDRESS -p $DOCKER_PASSWORD -u $DOCKER_USERNAME
   sudo docker push mrmrcoleman/visualise
 fi
