@@ -1,5 +1,5 @@
 body {
-  padding-top: 20px;
+  font-family: 'Nobile', sans-serif;
 }
 
 .footer {
@@ -7,6 +7,11 @@ body {
   margin-top: 40px;
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+.lead {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 /* Main marketing message and sign up button */
@@ -34,6 +39,7 @@ body {
 .chart-label {
   padding-top: 7px;
   font-weight: 500;
+  padding-bottom:20px;
 }
 
 .left {
