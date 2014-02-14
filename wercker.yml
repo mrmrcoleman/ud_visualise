@@ -7,7 +7,7 @@ build:
          code: |-
            ls -ahl
            whoami
-           ./test.sh
+           ./test.sh -p
 deploy:
     steps:
       - wercker/add-ssh-key:

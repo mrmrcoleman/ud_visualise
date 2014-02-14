@@ -1,4 +1,4 @@
-#!/bin/sh -vxe
+#!/bin/bash -vxe
 
 CONTAINER_FILE=/tmp/containerid
 CONTAINER_ID=0
