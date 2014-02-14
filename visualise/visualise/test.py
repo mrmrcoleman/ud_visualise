@@ -9,7 +9,7 @@ class VisualiseTest(unittest.TestCase):
     #Should be able to connect
     def testConnect(self):
         conn = httplib.HTTPConnection(self.URL)
-        conn.request("GET", "/visualise")
+        conn.request("GET", "/")
         req = conn.getresponse()
         self.assertEqual(httplib.OK, req.status)
         conn.close()
@@ -20,7 +20,7 @@ class VisualiseTest(unittest.TestCase):
         headers = {"Content-type": "application/x-www-form-urlencoded",
                    "Accept": "text/html"}
         conn = httplib.HTTPConnection(self.URL)
-        conn.request("POST", "/visualise", params, headers)
+        conn.request("POST", "/", params, headers)
         response = conn.getresponse()
         data = response.read()
         self.assertTrue('index=BATS' in data)

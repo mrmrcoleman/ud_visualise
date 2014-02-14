@@ -32,7 +32,7 @@
     };
 
     //Setup
-    var margin = {top: 20, right: 50, bottom: 30, left: 50},
+    var margin = {top: 20, right: 50, bottom: 50, left: 50},
         width = 600 - margin.left - margin.right,
         height = 300 - margin.top - margin.bottom;
 
@@ -146,6 +146,12 @@
             .style("text-anchor", "end")
             .attr("class", "symbol2")
             .text(stock2);
+
+        svg.append("text")
+            .attr("x", 0)
+            .attr("y", height + 34)
+            .attr("class", "supply-tag")
+            .text("Live data supplied by quandl");
     }
 
 
