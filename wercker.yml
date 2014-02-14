@@ -5,6 +5,7 @@ build:
       - script:
          name: build pythonjs image
          code: |-
+           ./build.sh
            ./test.sh -p
 deploy:
     steps:
