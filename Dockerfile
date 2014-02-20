@@ -1,4 +1,4 @@
-FROM mrmrcoleman/pythonjs
+FROM mrmrcoleman/python_webapp
 
 MAINTAINER mrmrcoleman
 

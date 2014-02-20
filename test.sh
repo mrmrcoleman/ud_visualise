@@ -1,15 +1,7 @@
 #!/bin/bash -vxe
 
-PUSH=$1
-
-RUN_ID=$(sudo docker run -p 5000:5000 -d mrmrcoleman/visualise /bin/bash -c "cd /opt/visualise/ && python run.py")
+RUN_ID=$(sudo docker run -p 5000:5000 -d mrmrcoleman/ud_visualise)
 sleep 5
-cd visualise/visualise
+cd visualise
 python test.py
 sudo docker stop $RUN_ID
-
-if [ "$PUSH" == "-p" ]
-then
-  sudo docker login -e $DOCKER_EMAIL_ADDRESS -p $DOCKER_PASSWORD -u $DOCKER_USERNAME
-  sudo docker push mrmrcoleman/visualise
-fi
