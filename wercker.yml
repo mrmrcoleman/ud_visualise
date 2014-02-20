@@ -3,7 +3,7 @@ box: wercker-labs/docker
 build:
     steps:
       - script:
-         name: build pythonjs image
+         name: build python_webapp image
          code: |-
            ./build.sh
            ./test.sh -p

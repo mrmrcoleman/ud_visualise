@@ -16,9 +16,9 @@ ADD requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
 RUN mkdir /var/www/public_html
-ADD visualise.wsgi /var/www/visualise/visualise.wsgi
-ADD visualise.cfg /etc/apache2/sites-available/visualise
-RUN a2ensite visualise
+ADD flaskapp.wsgi /var/www/flaskapp/flaskapp.wsgi
+ADD flaskapp.cfg /etc/apache2/sites-available/flaskapp
+RUN a2ensite flaskapp
 
 EXPOSE 80
 EXPOSE 5000
