@@ -6,7 +6,8 @@ build:
          name: build python_webapp image
          code: |-
            ./build.sh
-           ./test.sh -p
+           ./test.sh
+           ./push.sh
 deploy:
     steps:
       - wercker/add-ssh-key:
